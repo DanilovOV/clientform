@@ -22,7 +22,7 @@ $minwidth: 320px;
 }
 *,
 *:before,
-*after {
+*:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -102,6 +102,6 @@ h6 {
   width: 100vw;
   min-height: 100vh;
   overflow: hidden;
-  background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
 }
 </style>

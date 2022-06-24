@@ -1,31 +1,32 @@
 <template>
-  <form class="reg-form">
-    <div class="title">Регистрация</div>
-    <div class="element">
+  <form class="reg__form">
+    <div class="reg__title">Регистрация</div>
+    <div class="reg__element">
       <label for="surname">Фамилия</label>
-      <input id="surname" class="input" type="text" v-model.trim="form.surname" />
+      <input id="surname" class="reg__input" type="text" v-model.trim="form.surname" />
     </div>
-    <div class="element">
+    <div class="reg__element">
       <label for="name">Имя</label>
-      <input id="name" class="input" type="text" v-model.trim="form.name" />
+      <input id="name" class="reg__input" type="text" v-model.trim="form.name" />
     </div>
-    <div class="element">
+    <div class="reg__element">
       <label for="patronymic">Отчество</label>
-      <input id="patronymic" class="input" type="text" v-model.trim="form.patronymic" />
+      <input id="patronymic" class="reg__input" type="text" v-model.trim="form.patronymic" />
     </div>
-    <div class="element">
+    <div class="reg__element">
       <label for="birthdate">Дата рождения</label>
-      <input id="birthdate" class="input" type="date" v-model="form.birthdate" />
+      <input id="birthdate" class="reg__input" type="date" v-model="form.birthdate" />
     </div>
-    <div class="element">
+    <div class="reg__element">
       <label for="tel">Телефон</label>
-      <div class="telInput">
-        <div class="input telInput1">+ 7</div>
-        <input id="tel" class="input telInput2" type="tel" maxlength="10" v-model.trim="form.tel" />
+      <input id="tel" class="reg__input" type="tel" maxlength="10" v-model.trim="form.tel" />
+      <div class="reg__sms">
+        <input id="messages" type="checkbox" v-model="form.agreeWithSendSMS" />
+        <label for="messages">Не отправлять СМС</label>
       </div>
     </div>
 
-    <div class="gender">
+    <div class="reg__gender">
       Пол
       <div>
         <input id="male" name="gender" value="male" type="radio" v-model="form.gender" />
@@ -34,29 +35,7 @@
         <label for="female">Женский</label>
       </div>
     </div>
-
-    <div class="element">
-      <label for="clientgroup">Группа клиентов</label>
-      <select id="clientgroup" multiple size="3" v-model="form.selectedgroups">
-        <option v-for="(clientgroup, index) in clientgroups" :value="clientgroup.value" :key="index">
-          {{ clientgroup.label }}
-        </option>
-      </select>
-    </div>
-
-    <div class="element">
-      <label for="doctor">Лечащий врач</label>
-      <select id="doctor" v-model="form.doctor">
-        <option v-for="(doctor, index) in doctors" :value="doctor.value" :key="index">
-          {{ doctor.label }}
-        </option>
-      </select>
-    </div>
-
-    <div class="sms">
-      <input id="messages" type="checkbox" v-model="form.agreeWithSendSMS" />
-      <label for="messages">Не отправлять СМС</label>
-    </div>
+    <button class="reg__button" @click="$emit('changeStep', 2)">Далее</button>
   </form>
 </template>
 
@@ -71,41 +50,55 @@ export default {
         birthdate: '',
         tel: '',
         gender: 'male',
-        selectedgroups: [],
-        doctor: '',
         agreeWithSendSMS: false,
       },
-      clientgroups: [
-        {
-          label: 'VIP',
-          value: 'VIP',
-        },
-        {
-          label: 'Проблемные',
-          value: 'Problematic',
-        },
-        {
-          label: 'ОМС',
-          value: 'OMS',
-        },
-      ],
-      doctors: [
-        {
-          label: 'Иванов',
-          value: 'Ivanov',
-        },
-        {
-          label: 'Захаров',
-          value: 'Zaharov',
-        },
-        {
-          label: 'Чернышева',
-          value: 'Chernisheva',
-        },
-      ],
     };
   },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.reg {
+  &__sms {
+    width: 400px;
+    margin: 8px 0 0;
+
+    @media (max-width: 600px) {
+      width: 350px;
+    }
+    @media (max-width: 450px) {
+      width: 250px;
+    }
+    @media (max-width: 320px) {
+      width: 220px;
+    }
+  }
+
+  &__gender {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 25px 0 13px 0;
+
+    label {
+      margin: 10px 10px 0 0;
+    }
+
+    @media (max-width: 600px) {
+      width: 350px;
+    }
+    @media (max-width: 450px) {
+      width: 250px;
+    }
+    @media (max-width: 320px) {
+      width: 240px;
+    }
+  }
+}
+
+#male,
+#female {
+  margin: 10px 5px 0 0;
+}
+</style>

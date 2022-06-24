@@ -25,7 +25,10 @@
       <label for="issueDate">Дата выдачи</label>
       <input id="issueDate" class="reg__input" type="date" v-model="form.issueDate" />
     </div>
-    <button class="reg__submitButton" type="submit">Зарегистрироваться</button>
+    <div>
+      <button class="reg__button" @click.prevent="$emit('changeStep', 2)">Назад</button>
+      <button class="reg__button" type="submit" @click.prevent>Зарегистрироваться</button>
+    </div>
   </form>
 </template>
 
@@ -59,26 +62,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.reg {
-  &__form {
-    max-width: 750px;
-    background-color: rgba(255, 255, 255, 0.58);
-    margin: 20px auto;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    @media (max-width: 1000px) {
-      width: 500px;
-    }
-    @media (max-width: 600px) {
-      width: 400px;
-    }
-    @media (max-width: 450px) {
-      width: 280px;
-    }
-  }
-}
-</style>
+<style lang="scss"></style>
