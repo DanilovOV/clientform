@@ -25,7 +25,7 @@
       <label for="house">Дом</label>
       <input id="house" class="reg__input" type="text" v-model.trim="form.house" />
     </div>
-    <div>
+    <div class="reg__stepButtons">
       <button class="reg__button" @click.prevent="$emit('changeStep', 1)">Назад</button>
       <button class="reg__button" @click.prevent="$emit('changeStep', 3)">Далее</button>
     </div>

@@ -25,7 +25,7 @@
       <label for="issueDate">Дата выдачи</label>
       <input id="issueDate" class="reg__input" type="date" v-model="form.issueDate" />
     </div>
-    <div>
+    <div class="reg__stepButtons">
       <button class="reg__button" @click.prevent="$emit('changeStep', 2)">Назад</button>
       <button class="reg__button" type="submit" @click.prevent>Зарегистрироваться</button>
     </div>

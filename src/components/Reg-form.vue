@@ -36,7 +36,7 @@ export default {
 .reg {
   //reg__form
   &__form {
-    width: 750px;
+    width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -105,11 +105,19 @@ export default {
   }
   // reg__button
   &__button {
-    width: 140px;
+    min-width: 140px;
     height: 50px;
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 10px;
-    margin: 10px 5px 0 0;
+    margin: 30px 0 0;
+    font-size: 17px;
+    padding: 0 10px;
+  }
+  // reg__stepButtons
+  &__stepButtons {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
   }
 }
 
