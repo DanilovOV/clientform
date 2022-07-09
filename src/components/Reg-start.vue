@@ -35,7 +35,7 @@
         <label for="female">Женский</label>
       </div>
     </div>
-    <button class="reg__button" @click="$emit('changeStep', 2)">Далее</button>
+    <button class="reg__button" @click.prevent="$emit('changeStep', 2)">Далее</button>
   </form>
 </template>
 
@@ -79,7 +79,7 @@ export default {
     display: flex;
     flex-direction: column;
     width: 400px;
-    margin: 25px 0 13px 0;
+    margin: 25px 0 0;
 
     label {
       margin: 10px 10px 0 0;

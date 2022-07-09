@@ -3,7 +3,7 @@
     <div class="reg__title">Документы</div>
     <div class="reg__element">
       <label for="document">Документ</label>
-      <select id="document" v-model="form.document">
+      <select id="document" class="reg__input" v-model="form.document">
         <option v-for="(document, index) in documents" :value="document.value" :key="index">
           {{ document.label }}
         </option>
@@ -64,4 +64,8 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+select {
+  font-size: 16px;
+}
+</style>

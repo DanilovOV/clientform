@@ -37,6 +37,7 @@ export default {
   //reg__form
   &__form {
     width: 700px;
+    min-height: 660px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,10 +81,10 @@ export default {
   // reg__input
   &__input {
     width: 400px;
-    height: 50px;
+    height: 45px;
     margin: 5px 0 0;
+    padding: 5px 10px;
     border-radius: 5px;
-    padding: 10px;
     background-color: rgba(255, 255, 255, 0.85);
     color: rgb(77, 77, 77);
     font-size: 18px;
@@ -117,7 +118,9 @@ export default {
   &__stepButtons {
     width: 400px;
     display: flex;
+    flex: 1 0 auto;
     justify-content: space-between;
+    align-items: flex-end;
   }
 }
 
