@@ -27,7 +27,9 @@
     </div>
     <div class="reg__stepButtons">
       <button class="reg__button" @click.prevent="$emit('changeStep', 2)">Назад</button>
-      <button class="reg__button" type="submit" @click.prevent>Зарегистрироваться</button>
+      <router-link to="/Registration-complete">
+        <button class="reg__button">Зарегистрироваться</button>
+      </router-link>
     </div>
   </form>
 </template>
