@@ -40,7 +40,13 @@
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core';
+import { required } from '@vuelidate/validators';
+
 export default {
+  setup() {
+    return { v$: useVuelidate() };
+  },
   data() {
     return {
       form: {
@@ -52,6 +58,15 @@ export default {
         gender: 'male',
         agreeWithSendSMS: false,
       },
+    };
+  },
+  validations() {
+    return {
+      surname: { required },
+      name: { required },
+      patronymic: { required },
+      birthdate: { required },
+      tel: { required },
     };
   },
 };
