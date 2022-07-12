@@ -3,23 +3,51 @@
     <div class="reg__title">Регистрация</div>
     <div class="reg__element">
       <label for="surname">Фамилия</label>
-      <input id="surname" class="reg__input" type="text" v-model.trim="form.surname" />
+      <input
+        id="surname"
+        class="reg__input"
+        type="text"
+        v-model.trim="form.surname"
+        @blur="v$.form.surname.$touch"
+      />
     </div>
+    <div v-if="v$.form.surname.$error">Name field has an error.</div>
     <div class="reg__element">
       <label for="name">Имя</label>
-      <input id="name" class="reg__input" type="text" v-model.trim="form.name" />
+      <input
+        id="name"
+        class="reg__input"
+        type="text"
+        v-model.trim="form.name"
+      />
     </div>
     <div class="reg__element">
       <label for="patronymic">Отчество</label>
-      <input id="patronymic" class="reg__input" type="text" v-model.trim="form.patronymic" />
+      <input
+        id="patronymic"
+        class="reg__input"
+        type="text"
+        v-model.trim="form.patronymic"
+      />
     </div>
     <div class="reg__element">
       <label for="birthdate">Дата рождения</label>
-      <input id="birthdate" class="reg__input" type="date" v-model="form.birthdate" />
+      <input
+        id="birthdate"
+        class="reg__input"
+        type="date"
+        v-model="form.birthdate"
+      />
     </div>
     <div class="reg__element">
       <label for="tel">Телефон</label>
-      <input id="tel" class="reg__input" type="tel" maxlength="10" v-model.trim="form.tel" />
+      <input
+        id="tel"
+        class="reg__input"
+        type="tel"
+        maxlength="10"
+        v-model.trim="form.tel"
+      />
       <div class="reg__sms">
         <input id="messages" type="checkbox" v-model="form.agreeWithSendSMS" />
         <label for="messages">Не отправлять СМС</label>
@@ -29,13 +57,27 @@
     <div class="reg__gender">
       Пол
       <div>
-        <input id="male" name="gender" value="male" type="radio" v-model="form.gender" />
+        <input
+          id="male"
+          name="gender"
+          value="male"
+          type="radio"
+          v-model="form.gender"
+        />
         <label for="male">Мужской</label>
-        <input id="female" name="gender" value="female" type="radio" v-model="form.gender" />
+        <input
+          id="female"
+          name="gender"
+          value="female"
+          type="radio"
+          v-model="form.gender"
+        />
         <label for="female">Женский</label>
       </div>
     </div>
-    <button class="reg__button" @click.prevent="$emit('changeStep', 2)">Далее</button>
+    <button class="reg__button" @click.prevent="$emit('changeStep', 2)">
+      Далее
+    </button>
   </form>
 </template>
 
@@ -62,11 +104,13 @@ export default {
   },
   validations() {
     return {
-      surname: { required },
-      name: { required },
-      patronymic: { required },
-      birthdate: { required },
-      tel: { required },
+      form: {
+        surname: { required },
+        name: { required },
+        patronymic: { required },
+        birthdate: { required },
+        tel: { required },
+      },
     };
   },
 };

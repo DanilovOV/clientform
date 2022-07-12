@@ -153,4 +153,7 @@ select {
   color: rgb(255, 38, 92);
   margin: 3px 0 0 2px;
 }
+.invalid-input {
+  border: 1px solid red;
+}
 </style>
