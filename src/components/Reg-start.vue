@@ -6,12 +6,12 @@
       <input
         id="surname"
         class="reg__input"
+        :class="{ invalid__input: v$.form.surname.$error }"
         type="text"
         v-model.trim="form.surname"
         @blur="v$.form.surname.$touch"
       />
     </div>
-    <div v-if="v$.form.surname.$error">Name field has an error.</div>
     <div class="reg__element">
       <label for="name">Имя</label>
       <input
