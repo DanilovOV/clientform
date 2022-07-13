@@ -6,9 +6,9 @@
       <input
         id="surname"
         class="reg__input"
-        :class="{ invalid__input: v$.form.surname.$error }"
         type="text"
         v-model.trim="form.surname"
+        :class="{ invalid__input: v$.form.surname.$error }"
         @blur="v$.form.surname.$touch"
       />
     </div>
@@ -19,6 +19,8 @@
         class="reg__input"
         type="text"
         v-model.trim="form.name"
+        :class="{ invalid__input: v$.form.name.$error }"
+        @blur="v$.form.name.$touch"
       />
     </div>
     <div class="reg__element">
@@ -28,6 +30,8 @@
         class="reg__input"
         type="text"
         v-model.trim="form.patronymic"
+        :class="{ invalid__input: v$.form.patronymic.$error }"
+        @blur="v$.form.patronymic.$touch"
       />
     </div>
     <div class="reg__element">
@@ -37,6 +41,8 @@
         class="reg__input"
         type="date"
         v-model="form.birthdate"
+        :class="{ invalid__input: v$.form.birthdate.$error }"
+        @blur="v$.form.birthdate.$touch"
       />
     </div>
     <div class="reg__element">
@@ -47,6 +53,8 @@
         type="tel"
         maxlength="10"
         v-model.trim="form.tel"
+        :class="{ invalid__input: v$.form.tel.$error }"
+        @blur="v$.form.tel.$touch"
       />
       <div class="reg__sms">
         <input id="messages" type="checkbox" v-model="form.agreeWithSendSMS" />
@@ -75,9 +83,7 @@
         <label for="female">Женский</label>
       </div>
     </div>
-    <button class="reg__button" @click.prevent="$emit('changeStep', 2)">
-      Далее
-    </button>
+    <button class="reg__button" @click.prevent="stepOneSubmit">Далее</button>
   </form>
 </template>
 
@@ -101,6 +107,14 @@ export default {
         agreeWithSendSMS: false,
       },
     };
+  },
+  methods: {
+    stepOneSubmit() {
+      this.v$.$validate();
+      if (!this.v$.$error) {
+        this.$emit('changeStep', 2);
+      }
+    },
   },
   validations() {
     return {
