@@ -73,8 +73,8 @@
 </template>
 
 <script>
-import useVuelidate from '@vuelidate/core';
-import { required } from '@vuelidate/validators';
+import useVuelidate from "@vuelidate/core";
+import { required, minLength, maxLength } from "@vuelidate/validators";
 
 export default {
   setup() {
@@ -83,24 +83,24 @@ export default {
   data() {
     return {
       form: {
-        document: '',
-        series: '',
-        number: '',
-        whoIssued: '',
-        issueDate: '',
+        document: "",
+        series: "",
+        number: "",
+        whoIssued: "",
+        issueDate: "",
       },
       documents: [
         {
-          label: 'Паспорт',
-          value: 'Passport',
+          label: "Паспорт",
+          value: "Passport",
         },
         {
-          label: 'Свидетельство о рождении',
-          value: 'Birth_certificate',
+          label: "Свидетельство о рождении",
+          value: "Birth_certificate",
         },
         {
-          label: 'Водительское удостоверение',
-          value: 'Drivers_license',
+          label: "Водительское удостоверение",
+          value: "Drivers_license",
         },
       ],
     };
@@ -113,9 +113,20 @@ export default {
   validations() {
     return {
       form: {
-        series: { required },
-        number: { required },
-        whoIssued: { required },
+        series: {
+          required,
+          minLength: minLength(4),
+          maxLength: maxLength(4),
+        },
+        number: {
+          required,
+          minLength: minLength(6),
+          maxLength: maxLength(6),
+        },
+        whoIssued: {
+          required,
+          maxLength: maxLength(60),
+        },
         issueDate: { required },
       },
     };
