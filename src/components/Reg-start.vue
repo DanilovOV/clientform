@@ -88,8 +88,8 @@
 </template>
 
 <script>
-import useVuelidate from '@vuelidate/core';
-import { required } from '@vuelidate/validators';
+import useVuelidate from "@vuelidate/core";
+import { required, minLength, maxLength } from "@vuelidate/validators";
 
 export default {
   setup() {
@@ -98,12 +98,12 @@ export default {
   data() {
     return {
       form: {
-        surname: '',
-        name: '',
-        patronymic: '',
-        birthdate: '',
-        tel: '',
-        gender: 'male',
+        surname: "",
+        name: "",
+        patronymic: "",
+        birthdate: "",
+        tel: "",
+        gender: "male",
         agreeWithSendSMS: false,
       },
     };
@@ -112,16 +112,28 @@ export default {
     stepOneSubmit() {
       this.v$.$validate();
       if (!this.v$.$error) {
-        this.$emit('changeStep', 2);
+        this.$emit("changeStep", 2);
       }
     },
   },
   validations() {
     return {
       form: {
-        surname: { required },
-        name: { required },
-        patronymic: { required },
+        surname: {
+          required,
+          minLength: minLength(2),
+          maxLength: maxLength(20),
+        },
+        name: {
+          required,
+          minLength: minLength(2),
+          maxLength: maxLength(20),
+        },
+        patronymic: {
+          required,
+          minLength: minLength(2),
+          maxLength: maxLength(20),
+        },
         birthdate: { required },
         tel: { required },
       },
