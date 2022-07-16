@@ -123,10 +123,7 @@ export default {
           minLength: minLength(6),
           maxLength: maxLength(6),
         },
-        whoIssued: {
-          required,
-          maxLength: maxLength(60),
-        },
+        whoIssued: { required },
         issueDate: { required },
       },
     };

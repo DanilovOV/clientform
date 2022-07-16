@@ -89,7 +89,7 @@
 
 <script>
 import useVuelidate from "@vuelidate/core";
-import { required, minLength, maxLength } from "@vuelidate/validators";
+import { required, numeric } from "@vuelidate/validators";
 
 export default {
   setup() {
@@ -119,23 +119,11 @@ export default {
   validations() {
     return {
       form: {
-        surname: {
-          required,
-          minLength: minLength(2),
-          maxLength: maxLength(20),
-        },
-        name: {
-          required,
-          minLength: minLength(2),
-          maxLength: maxLength(20),
-        },
-        patronymic: {
-          required,
-          minLength: minLength(2),
-          maxLength: maxLength(20),
-        },
+        surname: { required },
+        name: { required },
+        patronymic: { required },
         birthdate: { required },
-        tel: { required },
+        tel: { required, numeric },
       },
     };
   },
