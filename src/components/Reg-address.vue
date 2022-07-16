@@ -75,8 +75,8 @@
 </template>
 
 <script>
-import useVuelidate from '@vuelidate/core';
-import { required } from '@vuelidate/validators';
+import useVuelidate from "@vuelidate/core";
+import { required, numeric } from "@vuelidate/validators";
 
 export default {
   setup() {
@@ -85,12 +85,12 @@ export default {
   data() {
     return {
       form: {
-        index: '',
-        country: '',
-        region: '',
-        city: '',
-        street: '',
-        house: '',
+        index: "",
+        country: "",
+        region: "",
+        city: "",
+        street: "",
+        house: "",
       },
     };
   },
@@ -98,7 +98,7 @@ export default {
     stepTwoSubmit() {
       this.v$.$validate();
       if (!this.v$.$error) {
-        this.$emit('changeStep', 3);
+        this.$emit("changeStep", 3);
       }
     },
   },
@@ -110,7 +110,7 @@ export default {
         region: { required },
         city: { required },
         street: { required },
-        house: { required },
+        house: { required, numeric },
       },
     };
   },
